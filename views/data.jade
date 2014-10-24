@@ -1,0 +1,11 @@
+extends layot
+
+block content
+  .container
+    h2 Қолданушылардың тізімі!
+    table.table
+      - for (var i=0; i<tabl.length; i++ ) {
+      tr
+        - each item in tabl[i]
+          td= item 
+      - }
