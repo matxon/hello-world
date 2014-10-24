@@ -17,7 +17,7 @@
     cp kazakh*.vim /usr/local/share/vim/vim74/keymap
     echo 'set keymap=kazakh' >> ~/.vimrc
 
-тілді ауыстыру: '<CTRL-^>'
+тілді ауыстыру: `<CTRL-^>`
 
 ## Бағдарламаны орнату және орындау:
 
