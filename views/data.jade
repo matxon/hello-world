@@ -1,11 +1,15 @@
 extends layot
 
+  
+
 block content
   .container
-    h2 Қолданушылардың тізімі!
+    - var stab = [ {id: 1, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 2, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 3, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 4, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 5, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 6, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 7, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 8, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 9, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 10, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}, {id: 11, name: 'Кумулятивный заряд', ed: 'шт', qty: 5}]
+    h2 Зарядтардың тізімі
     table.table
-      - for (var i=0; i<tabl.length; i++ ) {
+      - for (var i=0; i < stab.length; i++ ) {
       tr
-        - each item in tabl[i]
-          td= item 
+        each item, key in stab[i]
+          td(class= key) #{item} 
       - }
+
