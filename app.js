@@ -3,6 +3,8 @@
 
 var express = require('express'),
     routes = require('./routes/index'); //express.Router(),
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 
 var app = express();
 
@@ -13,6 +15,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 // middleware
+app.use(bodyParser({ uploadDir: __dirname + '/files', keepExtensions: true }));
+app.use(methodOverride());
+
 app.use(express.static(__dirname + '/public')); 
 app.use('/', routes);
 

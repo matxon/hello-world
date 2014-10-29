@@ -32,4 +32,9 @@ router.get( '/db', function( req, res ) {
   });
 }); 
 
+router.post('/fileupload', function( req, res ) {
+  console.log( req.files );
+  res.send( 'ok' );
+});
+
 module.exports = router;
