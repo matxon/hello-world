@@ -24,7 +24,7 @@ var tables = [
 	},
 	{
 		name: 'supply',
-		query: '(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, pdate DATE NOT NULL, contragent.id INT NOT NULL)'
+		query: '(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, pdate DATE NOT NULL, contragentid INT NOT NULL)'
 	},
 	{	
 		name: 'supply_table',
@@ -32,7 +32,7 @@ var tables = [
 	},
 	{
 		name: 'realization',
-		query: '(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dpdate DATE NOT NULL, employee.id INT NOT NULL)'
+		query: '(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, pdate DATE NOT NULL, employeeid INT NOT NULL)'
 	},
 	{
 		name: 'realization_table',
