@@ -34,12 +34,12 @@ router.get( '/charges', function( req, res ) {
 });
 
 router.get('/geted', function(req, res) {
-  var temp = [];
   var query = 'select * from ed';
   testdb.query( query, function( err, data ) {
     if (err) { res.send( "error"); return };
+    var temp = [];
     for(var i=0; i<data.length; i++) {
-      temp.push( { value: data[i]['ed'], id: data[i]['id'] } );
+      temp.push( { label: data[i]['ed'], value: data[i]['id'] } );
     }
     res.send(temp);
   });
