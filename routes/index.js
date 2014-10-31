@@ -6,7 +6,7 @@ var options = {
   host: 'localhost',
   user: 'matxon',
   database: 'test',
-  password: ''
+  password: '123'
 };
 
 var testdb = new mysqldb( options );
