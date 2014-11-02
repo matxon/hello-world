@@ -26,7 +26,10 @@ $(function() {
                                  "<td>+</td>" +
         "<td>" + name.val() + "</td>" +
           "<td>" + ed.val() + "</td>" +
-            "</tr>" );
+          '<td><button type="button" class="btn btn-default btn-xs">' +
+          '<span class="glyphicon glyphicon-pencil"></span></button>' +
+          '<button type="button" class="btn btn-default btn-xs">' +
+          '<span class="glyphicon glyphicon-trash"></span></button></tr>' );
       dialog.dialog( "close" );
     }
     return valid;
@@ -34,6 +37,11 @@ $(function() {
 
   dialog = $("#dialog-form").dialog(dialogOptions);
   $("#addcharges").click(function() { dialog.dialog("open") });
+
+  dialog.find( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    addTable();
+  });
 
   $("#autocomplete").autocomplete( { source: "/geted" } );
 });

@@ -15,12 +15,13 @@ block content
       input(type="submit", tabindex="-1", style="position: absolute; top:-1000px;")
 
   .container
-    h2 Зарядтардың тізімі
+    h2 Қолданушылардың тізімі
     table#charges.table
       thead
         tr
           - each item in th
             th= item
+          th Әрекет
       tbody
         - if (tabl!=NULL)
           - for (var i=0; i < tabl.length; i++ ) {
@@ -30,4 +31,4 @@ block content
           - }
 
     button#addcharges(type="button",
-      class="btn btn-default navbar-btn") Жаңадан енгізу
+      class="btn btn-default navbar-btn") Жаңасын қосу

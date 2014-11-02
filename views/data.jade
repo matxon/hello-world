@@ -11,11 +11,6 @@ block content
           input#name(type="text", name="name", value="Кумулятивный заряд PowerJet HMX 4505", class="form-control")
       .form-group
           label(for="ed") Өлшем бірлігі
-          select.form-control(style="display:none")
-            option шт
-            option м
-            option кг
-            option к-т
           input#autocomplete.form-control(type="text", name="ed")
       input(type="submit", tabindex="-1", style="position: absolute; top:-1000px;")
 
@@ -26,13 +21,19 @@ block content
         tr
           - each item in th
             th= item
+          th Әрекет
       tbody
         - if (tabl!=NULL)
           - for (var i=0; i < tabl.length; i++ ) {
           tr
             each item, key in tabl[i]
               td(class= key) #{item} 
+            td
+              button.btn.btn-default.btn-xs(type="button")
+                span.glyphicon.glyphicon-pencil
+              button.btn.btn-default.btn-xs(type="button")
+                span.glyphicon.glyphicon-trash
           - }
 
     button#addcharges(type="button",
-      class="btn btn-default navbar-btn") Жаңадан енгізу
+      class="btn btn-default navbar-btn") Жаңасын қосу
