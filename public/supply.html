@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="kk">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Зарядтар</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <style type="text/css">
+      body {
+        min-height: 500px;
+        padding-top: 70px;
+      }
+      .validateTips {
+        border: 1px solid transparent;
+        padding: 0.3em;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+    <div id="someElement">
+         <h1>Қоймаға жаңа зарядтардың келіп түсуі</h1>
+
+        <p><strong>БҰЛ БЕТТІҢ МАҚСАТЫ:</strong>Түскен күні және қайдан келгені тіркеледі. Егер контрагент болмаса оны енгізудің мүмкіндігін (интернет бетін қайта жүктемей) қарастыру керек. Астында тәуелді форма болады, онда да тізімде жоқ зарядтарды қосуға мүмкіндік болуы керек, әрине қайта жүктеусіз.</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-5 col-xs-5">
+            <div class="input-group"> <span class="input-group-addon">Тіркеу нөмірі:</span>
+                <input type="text" autocomplete="off" class="form-control" placeholder="14" />
+            </div>
+        </div>
+        <div class="col-sm-7 col-xs-7">
+            <div class="input-group"> <span class="input-group-addon">Тіркелген күні:</span>
+                <input type="text" autocomplete="off" class="form-control" id="datepicker" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="input-group"> <span class="input-group-addon">Кімнен</span>
+            <input type="text" autocomplete="off" class="form-control" /> 
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">...</button>
+              </span>
+        </div>
+    </div>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Келіп түскен заттардың тізімі</div>
+        <!-- Керек болса пайдаланарсың
+        <div class="panel-body">
+            <p>...</p>
+        </div> -->
+
+        <!-- Table -->
+        <table id="charges" class="table">
+            <thead>
+                <tr><th>id</th><th>Зарядтың атауы</th><th>өл.бірлік</th><th>Әрекет</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>+</td><td>Кумулятивный заряд PowerJet HMX 4505</td><td>шт</td>
+                    <td><button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>+</td><td>Кумулятивный заряд PowerJet HMX 4505</td><td>шт</td>
+                    <td><button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>+</td><td>Кумулятивный заряд PowerJet HMX 4505</td><td>шт</td>
+                    <td><button type="button" class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td><td>2</td><td>3</td><td>4</td>
+                </tr>
+            </tbody>
+        </table>
+        <form><table class="table">
+            <tr>
+                    <td><input type="text" placeholder="14" style="width:100%" /></td>
+            <td><input type="text" placeholder="14" style="width:100%" /></td>
+            <td><input type="text" placeholder="14" style="width:100%"/></td>
+            <td><input type="text" placeholder="14" style="width:100%" /></td>
+            </tr>
+        </table>
+        </form>
+            
+    </div>
+</div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+      $(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: "dd-mm-yy" });
+});
+    </script>
+  </body>
+
+</html>
