@@ -3,20 +3,15 @@ extends layot
   
 
 block content
-  #dialog-form(title="Жаңа заряд егізу")
+  #dialog-form(title="Жаңа қолданушыны енгізу")
     p.validateTips All form fields are required.
     form(role='form')
       .form-group
-          label(for="name") Зарядтың атауы
-          input#name(type="text", name="name", value="Кумулятивный заряд PowerJet HMX 4505", class="form-control")
+          label(for="name") Аты
+          input#name(type="text", name="name", class="form-control")
       .form-group
-          label(for="ed") Өлшем бірлігі
-          select.form-control(style="display:none")
-            option шт
-            option м
-            option кг
-            option к-т
-          input#autocomplete.form-control(type="text", name="ed")
+          label(for="password") паролі
+          input#password.form-control(type="text", name="password")
       input(type="submit", tabindex="-1", style="position: absolute; top:-1000px;")
 
   .container

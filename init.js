@@ -2,13 +2,14 @@
  * Mysql-де test базасы жоқ болған жағдайда оны жаңадан құрады
  */
 
-var options = {
-	host: 'localhost',
-	user: 'root',
-	pass: '123',
-	  db: 'test'
-};
+var mysqldb = require('./mysqldb');
 
+var options = {
+  host: 'localhost',
+  user: 'matxon',
+  database: 'test',
+  password: ''
+};
 var tables = [ 
 	{ 
 		name: 'users',
@@ -45,10 +46,25 @@ var tables = [
 ];
 
 // Mysql-ге қосылу
-//
-// егер жоқ болса
+var testdb = new mysqldb( options );
+var testerror = false;
 
-console.log('CREATE DATABASE IF NOT EXISTS ' + options.db);
-for( var i = 0; i < tables.length; i++) {
-	console.log('CREATE TABLE IF NOT EXISTS ' + tables[i].name + ' ' + tables[i].query);
-}
+//testdb.connect( function(err) {
+//	if (err) {
+		console.log( 'Please, in mysql "CREATE DATABASE TEST" ')
+		// егер жоқ болса
+//	}
+//});
+
+  for( var i = 0; i < tables.length; i++) {
+    var query = 'CREATE TABLE IF NOT EXISTS ' + tables[i].name + ' ' + tables[i].query;
+    testdb.query( query, function( err, data) {
+    if ( err ) {
+      console.log( err );
+      return;
+    }
+      console.log( data );
+    });
+  }
+
+testdb.end();
