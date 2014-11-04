@@ -28,6 +28,11 @@ block content
           tr
             each item, key in tabl[i]
               td(class= key) #{item} 
+            td
+              button.btn.btn-default.btn-xs(type="button")
+              span.glyphicon.glyphicon-pencil
+              button.btn.btn-default.btn-xs(type="button")
+              span.glyphicon.glyphicon-trash
           - }
 
     button#addcharges(type="button",
