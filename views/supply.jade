@@ -1,0 +1,49 @@
+extends layot
+
+block content
+  .container
+    #someElement
+      h1 Қоймаға жаңа зарядтардың келіп түсуі
+      p.
+       <strong>БҰЛ БЕТТІҢ МАҚСАТЫ:</strong>Түскен күні және қайдан келгені тіркеледі. Егер контрагент болмаса оны енгізудің мүмкіндігін (интернет бетін қайта жүктемей) қарастыру керек. Астында тәуелді форма болады, онда да тізімде жоқ зарядтарды қосуға мүмкіндік болуы керек, әрине қайта жүктеусіз.
+    .row.top-pad
+      .col-sm-5.col-xs-5
+        .input-group
+          span.input-group-addon Тіркеу нөмірі:
+          input(type="text",autocomplete="off",class="form-control",placeholder="14")
+      .col-sm-7.col-xs-7
+        .input-group
+          span.input-group-addon Тіркелген күні:
+          input(type="text",autocomplete="off",class="form-control",id="datepicker")
+    .top-pad
+        .input-group
+          span.input-group-addon Кімнен:
+          input(type="text",autocomplete="off",class="form-control")
+          span.input-group-btn
+            button.btn.btn-default(type="button") ...
+    .top-pad
+      .panel.panel-default
+        .panel-heading Келіп түскен заттардың тізімі
+
+        table#charges.table
+          thead
+            tr
+              th id
+              th Зарядтың атауы
+              th өл.бірлік
+              th Әрекет
+          tbody
+            tr
+              td +
+              td Кумулятивный заряд PowerJet HMX 4505
+              td шт
+              td 
+                button(type="button",class="btn btn-default btn-xs")
+                  span.glyphicon.glyphicon-pencil
+                button(type="button" class="btn btn-default btn-xs")
+                  span.glyphicon.glyphicon-trash
+            tr
+              td 1
+              td 2
+              td 3
+              td 4

@@ -58,6 +58,14 @@ router.get( '/users', function( req, res ) {
   });
 }); 
 
+router.get( '/supply', function( req, res ) {
+  res.render( 'supply', {title: 'Жаңа түсім', active: 3} );
+});
+
+router.get( '/realization', function( req, res ) {
+  res.render( 'realization', {title: 'Кетуін тіркеу', active: 4} );
+});
+
 router.post('/fileupload', function( req, res ) {
   console.log( req.files );
   res.send( 'ok' );
