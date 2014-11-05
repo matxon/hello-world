@@ -1,7 +1,5 @@
 extends layot
 
-  
-
 block content
   #dialog-form(title="Жаңа қолданушыны енгізу")
     p.validateTips All form fields are required.
@@ -10,8 +8,8 @@ block content
           label(for="name") Аты
           input#name(type="text", name="name", class="form-control")
       .form-group
-          label(for="password") паролі
-          input#password.form-control(type="text", name="password")
+          label(for="password") Құпия сөз 
+          input#password.form-control(type="password", name="password")
       input(type="submit", tabindex="-1", style="position: absolute; top:-1000px;")
 
   .container
@@ -37,3 +35,7 @@ block content
 
     button#addcharges(type="button",
       class="btn btn-default navbar-btn") Жаңасын қосу
+    button#test(type="button",
+      class="btn btn-default navbar-btn") Базаға сақтау
+block scripts
+ script(src="js/users.js")
