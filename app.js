@@ -20,7 +20,7 @@ app.use(methodOverride());
 
 app.use(express.static(__dirname + '/public')); 
 app.use('/', routes);
-
+/*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -52,7 +52,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
+*/
 
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
