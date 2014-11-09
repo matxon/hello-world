@@ -9,6 +9,7 @@ var options = {
   password: '123'
 };
 
+//------------------------------------------------------------------------
 var testdb = new mysqldb( options );
 
 testdb.connect( function( err ) {
@@ -16,10 +17,12 @@ testdb.connect( function( err ) {
 });
 
 // route
+//------------------------------------------------------------------------
 router.get( '/', function( req, res ) {
   res.render( "home", { title: "Мәліметтер базасы", active: 0} ); 
 });
 
+//------------------------------------------------------------------------
 router.get( '/charges', function( req, res ) {
   var query = 'select charges.*, ed.ed from charges, ed where charges.ed=ed.id';
   //var query = 'select * from users';
@@ -33,6 +36,7 @@ router.get( '/charges', function( req, res ) {
   });
 });
 
+//------------------------------------------------------------------------
 router.get('/geted', function(req, res) {
   var query = 'select * from ed';
   testdb.query( query, function( err, data ) {
@@ -45,27 +49,56 @@ router.get('/geted', function(req, res) {
   });
 });
 
+//------------------------------------------------------------------------
 router.get( '/users', function( req, res ) {
+  var th = [ 'id', 'Қолданушының аты','паролі'];
+  res.render( 'users', {title: 'Қолданушылар', active: 1, tabl: {}, th: th} );
+});
 
-  var query = 'select * from users';
-  testdb.query( query, function( err, data ) {
-    if (err) {
-      res.send( "/db.query error" );
-      return;
-    } 
-    var th = [ 'id', 'Қолданушының аты','паролі'];
-    res.render( 'users', {title: 'Қолданушылар', active: 1, tabl: data, th: th} );
-  });
-}); 
-
+//------------------------------------------------------------------------
 router.get( '/supply', function( req, res ) {
   res.render( 'supply', {title: 'Жаңа түсім', active: 3} );
 });
 
+//------------------------------------------------------------------------
 router.get( '/realization', function( req, res ) {
   res.render( 'realization', {title: 'Кетуін тіркеу', active: 4} );
 });
 
+//------------------------------------------------------------------------
+router.get( '/api/users', function( req, res ) {
+
+  var query = 'select * from users';
+
+  testdb.query( query, function( err, data ) {
+    if (err) {
+      console.log( " /API/USERS ", err );
+      res.send( "/db.query error" );
+      return;
+    } 
+    res.send( data );
+    console.log( data );
+  });
+});
+//------------------------------------------------------------------------
+router.post( '/api/users', function( req, res ) {
+
+  var query = 'insert into users (name, pass) values ("' + 
+    req.param('name') + '","' + req.param('pass') + '")';
+
+  console.log( query );
+
+  testdb.query( query, function( err, data ) {
+    if (err) {
+      console.log( err );
+      return;
+    } 
+    console.log( data );
+    res.send( { id: data.insertId, name: req.param('name'), pass: req.param('pass') } );
+  }); 
+}); 
+
+//------------------------------------------------------------------------
 router.post('/fileupload', function( req, res ) {
   console.log( req.files );
   res.send( 'ok' );

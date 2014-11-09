@@ -1,60 +1,86 @@
 $(function() {
+
   var dialog; 
   var form = $("form");
   var name = $("#name");
   var pass = $("#password");
-      
+  var table = $("#charges tbody");
+
   var dialogOptions = {
     autoOpen: false,
     modal: true,
     width: 550,
     buttons: [
       { text: "Жазу", click: function() {
-          console.log(form[0]);
-          addTable();
+          savebase();
         }
       }
-    ]
+    ],
+    close: function() {
+      form[0].reset();
+    }
   }
 
-
-  function addTable() {
-    var valid = true;
-    
-    var regexp = "\[0-9A-za-z]";
-
-    if ( valid ) {
-      $( "#charges tbody" ).append( "<tr>" +
-                                 "<td>+</td>" +
-        "<td>" + name.val() + "</td>" +
-          "<td>" + pass.val() + "</td>" +
+  function addtable( user ) {
+        table.append("<tr>" +
+          "<td>" + user.id + "</td>" +
+          "<td>" + user.name + "</td>" +
+          "<td>" + user.pass + "</td>" +
           '<td><button type="button" class="btn btn-default btn-xs">' +
           '<span class="glyphicon glyphicon-pencil"></span></button>' +
           '<button type="button" class="btn btn-default btn-xs">' +
           '<span class="glyphicon glyphicon-trash"></span></button></tr>' );
-      form[0].reset();
-      dialog.dialog( "close" );
+  }
+  
+  function myescape( text ) {
+    var templ = '"<>&\'';
+    var r = ['&quot', '&lt', '&gt', '&amp', '&#039'];
+    var temp = '';
+
+    for (var i=0; i<text.length; i++) {
+      var j = templ.indexOf(text.charAt(i));
+      temp += ((j<0) ? text.charAt(i) : r[j]);
     }
-    return valid;
+    return temp;
   }
 
+  function savebase() {
+    var temp = { name: myescape(name.val()), pass: myescape(pass.val()) };
+
+    console.log( temp );
+
+    $.ajax({
+      type: 'POST',
+      url: '/api/users',
+      data: temp,
+      success: function( newUser ) {
+        addtable( newUser );
+        dialog.dialog("close");
+      },
+      error: function() {
+        alert('error saving user');
+      }
+    });
+  }
   dialog = $("#dialog-form").dialog(dialogOptions);
 
   $("#addcharges").click(function() { dialog.dialog("open") });
 
-  $("#test").click( function() { 
-    var td = $("td");
-    var temp = [];
-    for (var i = 0; i < td.length; i += 4) {
-      temp.push({ id:'', name: td[i+1].innerText, pass: td[i+2].innerText });
-    }
+  $("#autocomplete").autocomplete( { source: "/geted" } );
 
-    console.log(temp);
-  });
   dialog.find( "form" ).on( "submit", function( event ) {
     event.preventDefault();
-    addTable();
+    savebase();
   });
 
-  $("#autocomplete").autocomplete( { source: "/geted" } );
+  $.ajax({
+    type: 'GET',
+    url: '/api/users',
+    success: function( users ) {
+      $.each( users, function(i, user) {
+        addtable( user );
+      });
+    }
+  });
+
 });
