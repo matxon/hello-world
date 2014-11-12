@@ -27,9 +27,9 @@ $(function() {
           "<td>" + user.name + "</td>" +
           "<td>" + user.pass + "</td>" +
           '<td><button type="button" class="btn btn-default btn-xs">' +
-          '<span class="glyphicon glyphicon-pencil"></span></button>' +
+          '<span class="glyphicon glyphicon-pencil" data-id="' + user.id + '"></span></button>' +
           '<button type="button" class="btn btn-default btn-xs">' +
-          '<span class="glyphicon glyphicon-trash"></span></button></tr>' );
+          '<span class="glyphicon glyphicon-trash" data-id="' + user.id + '"></span></button></tr>' );
   }
   
   function myescape( text ) {
@@ -71,6 +71,15 @@ $(function() {
   dialog.find( "form" ).on( "submit", function( event ) {
     event.preventDefault();
     savebase();
+  });
+
+  table.delegate('span', 'click', function () {
+    if ($(this).hasClass('.glyphicon-pencil'))
+    {
+      // жазылған мәліметті өзгерту
+    } else {
+      // мәліметті өшіру
+    }
   });
 
   $.ajax({
