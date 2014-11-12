@@ -73,6 +73,9 @@ $(function() {
     savebase();
   });
 
+  // делегированиені пайдаланбаса болмайды
+  // өйткені бұл код орындалып жатқанда таблацада
+  // ешқандай мәліметтер болмайды
   table.delegate('span', 'click', function () {
     if ($(this).hasClass('.glyphicon-pencil'))
     {
