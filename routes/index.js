@@ -66,6 +66,21 @@ router.get( '/realization', function( req, res ) {
 });
 
 //------------------------------------------------------------------------
+router.get( '/api/users/delete', function( req, res ) {
+
+  var query = 'delete from users where id=' + req.param('id');
+
+  testdb.query( query, function( err, data ) {
+    if (err) {
+      console.log( " /API/USERS/DELETE ", err );
+      res.send( "/db.query error" );
+      return;
+    } 
+    res.send( data );
+    console.log( data );
+  });
+});
+//------------------------------------------------------------------------
 router.get( '/api/users', function( req, res ) {
 
   var query = 'select * from users';

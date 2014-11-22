@@ -77,22 +77,42 @@ $(function() {
   // өйткені бұл код орындалып жатқанда таблацада
   // ешқандай мәліметтер болмайды
   table.delegate('span', 'click', function () {
-    if ($(this).hasClass('.glyphicon-pencil'))
+    var _this = $(this);
+    console.log(_this.hasClass('glyphicon-pencil') + _this.attr('class'));
+    if (_this.hasClass('glyphicon-pencil'))
     {
       // жазылған мәліметті өзгерту
+      
     } else {
       // мәліметті өшіру
-    }
-  });
-
-  $.ajax({
-    type: 'GET',
-    url: '/api/users',
-    success: function( users ) {
-      $.each( users, function(i, user) {
-        addtable( user );
+      $.ajax( {
+        type: 'GET',
+        url: '/api/users/delete?id='+_this.attr('data-id'),
+        success: function() {
+          clear(_this);
+          //recieve();
+        }
       });
     }
+    return false;
   });
+
+  function clear(elem) {
+    elem.parent().parent().parent().empty();
+  }
+
+  function recieve() {
+    $.ajax({
+      type: 'GET',
+      url: '/api/users',
+      success: function( users ) {
+        $.each( users, function(i, user) {
+          addtable( user );
+        });
+      }
+    });
+  }
+
+  recieve();
 
 });
